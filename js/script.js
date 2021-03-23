@@ -173,6 +173,31 @@ console.log(colorIcons);
 // 5. inserisco nel DOM tutte le icone come nella milestone 1
 printList(colorIcons);
 
+// 6. aggiungo le opzioni alla select
+const select = $("#type");
+colors.forEach((item) => {
+
+  const {category} = item;
+  const option = `<option value="${category}">${category}</option>`;
+  select.append(option);
+});
+
+
+// 7. al change della select, filtro le icone per categoria
+select.change(function() {
+  // 7a. elimino tutte le icone
+  iconsList.empty();
+
+  let selected = $(this).val();
+  // 7b. ciclo le icone e prendo solo quelle col valore selezionato dall'utente
+  const filteredIcons = colorIcons.filter((item) => {
+    return item.category === selected;
+  });
+
+  printList(filteredIcons);
+
+});
+
 
 // FUNZIONI
 function printList(icons) {
