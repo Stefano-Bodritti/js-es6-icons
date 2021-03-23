@@ -129,6 +129,41 @@ icons.forEach((item) => {
     <i class="${family} ${prefix}${name}"></i>
     <div class="title">${name}</div>
     </div>`;
-    
+
     iconsList.append(singleItem);
 });
+
+// 3. creo array con associazione categoria-colore
+const colors = [
+  {
+    category: "food",
+    color: "orange"
+  },
+  {
+    category: "beverage",
+    color: "yellow"
+  },
+  {
+    category: "animal",
+    color: "green"
+  }
+];
+
+// 4. ciclo tutto l'array e ad ogni obj aggiungo il colore relativo
+const colorIcons = icons.map((icon) => {
+  let trueColor;
+
+  // 4a. ciclo l'array dei colori
+  colors.forEach((item) => {
+    // 4b. confronto la category di icons con quella di colors
+    if ( icon.category === item.category ) {
+      trueColor = item.color;
+    }
+  });
+  // 4c. assegno il colore giusto
+  icon.color = trueColor;
+
+  return icon;
+});
+
+console.log(colorIcons);
