@@ -1,9 +1,9 @@
 // Milestone 1
 // Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout.
-// 
+//
 // Milestone 2
 // Coloriamo le icone per tipo
-// 
+//
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
@@ -117,3 +117,18 @@ const icons = [
     category: "animal"
   },
 ];
+
+// 1. seleziono il div dal HTML
+const iconsList = $(".icons");
+
+// 2. ciclo tutto l'array
+icons.forEach((item) => {
+  // 2a. per ogni obj, vado a costruire la struttura da inserire nel DOM
+  const {name, family, prefix} = item;
+  const singleItem = `<div>
+    <i class="${family} ${prefix}${name}"></i>
+    <div class="title">${name}</div>
+    </div>`;
+    
+    iconsList.append(singleItem);
+});
