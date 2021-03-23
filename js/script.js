@@ -185,17 +185,23 @@ colors.forEach((item) => {
 
 // 7. al change della select, filtro le icone per categoria
 select.change(function() {
-  // 7a. elimino tutte le icone
-  iconsList.empty();
 
   let selected = $(this).val();
-  // 7b. ciclo le icone e prendo solo quelle col valore selezionato dall'utente
-  const filteredIcons = colorIcons.filter((item) => {
-    return item.category === selected;
-  });
 
-  printList(filteredIcons);
-
+  // 7a. elimino tutte le icone
+  iconsList.empty();
+  // 7b. se seleziono un valore, allora...
+  if ( selected != "" ) {
+    // 7c. ciclo le icone e prendo solo quelle col valore selezionato dall'utente
+    const filteredIcons = colorIcons.filter((item) => {
+      return item.category === selected;
+    });
+    // 7d. inserisco nel DOM la lista filtrata
+    printList(filteredIcons);
+  } else {
+    // 7e. altrimenti, inserisco la lista non filtrata
+    printList(colorIcons);
+  }
 });
 
 
