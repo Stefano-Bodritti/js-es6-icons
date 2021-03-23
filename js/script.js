@@ -122,7 +122,7 @@ const icons = [
 const iconsList = $(".icons");
 
 // 2. ciclo tutto l'array
-icons.forEach((item) => {
+/*icons.forEach((item) => {
   // 2a. per ogni obj, vado a costruire la struttura da inserire nel DOM
   const {name, family, prefix} = item;
   const singleItem = `<div>
@@ -131,7 +131,10 @@ icons.forEach((item) => {
     </div>`;
 
     iconsList.append(singleItem);
-});
+});*/
+
+// oppure con funzione
+// printList(icons);
 
 // 3. creo array con associazione categoria-colore
 const colors = [
@@ -167,3 +170,20 @@ const colorIcons = icons.map((icon) => {
 });
 
 console.log(colorIcons);
+// 5. inserisco nel DOM tutte le icone come nella milestone 1
+printList(colorIcons);
+
+
+// FUNZIONI
+function printList(icons) {
+  icons.forEach((item) => {
+
+    const {name, family, prefix, color} = item;
+    const singleItem = `<div>
+      <i class="${family} ${prefix}${name}" style="color: ${color}"></i>
+      <div class="title">${name}</div>
+      </div>`;
+
+    iconsList.append(singleItem);
+  });
+}
